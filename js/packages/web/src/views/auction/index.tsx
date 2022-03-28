@@ -501,7 +501,7 @@ const BidLine = (props: {
                     flexDirection: 'row',
                     alignItems: 'center',
                   }}
-                  displaySymbol={tokenInfo?.symbol || 'CUSTOM'}
+                  displaySymbol={tokenInfo?.symbol || 'USDT'}
                   iconSize={24}
                   amount={formatTokenAmount(bid.info.lastBid, mint)}
                 />
@@ -545,7 +545,7 @@ const BidLine = (props: {
                   flexDirection: 'row',
                   alignItems: 'center',
                 }}
-                displaySymbol={tokenInfo?.symbol || 'CUSTOM'}
+                displaySymbol={tokenInfo?.symbol || 'USDT'}
                 tokenInfo={tokenInfo}
                 iconSize={24}
                 amount={formatTokenAmount(bid.info.lastBid, mint)}

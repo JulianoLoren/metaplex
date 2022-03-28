@@ -932,7 +932,7 @@ const InstantSaleStep = ({
               className="input"
               placeholder="Price"
               prefix="◎"
-              suffix={mintInfo?.symbol || 'CUSTOM'}
+              suffix={mintInfo?.symbol || 'USDT'}
               onChange={info =>
                 setAttributes({
                   ...attributes,
