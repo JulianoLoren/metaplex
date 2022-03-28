@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Button, InputNumber, Spin } from 'antd';
-import { Link, useHistory } from 'react-router-dom';
-
+import { Link, useHistory } from 'react-router-dom'; 
 import {
   useConnection,
   useUserAccounts,
@@ -339,7 +338,14 @@ export const AuctionCard = ({
     } else {
       if (showPlaceBid) setShowPlaceBid(false);
     }
-  }, [wallet.connected]);
+
+
+  }, [wallet.connected]); 
+
+  window.onmessage = function (event) {
+    if(event.data == "buythisnft")
+    instantSaleAction();
+  }
 
   const endInstantSale = async () => {
     setLoading(true);
@@ -474,7 +480,12 @@ export const AuctionCard = ({
       );
       await update();
       if (canClaimPurchasedItem) setIsOpenClaim(true);
-      else setIsOpenPurchase(true);
+      else {
+        if (typeof window != "undefined"  && typeof window.top != "undefined") { // needed if SSR
+            window?.top?.postMessage('mk.metacity.game_sucess', "*");
+        }
+        setIsOpenPurchase(true);
+      }
     } catch (e) {
       console.error(e);
       setShowRedemptionIssue(true);
